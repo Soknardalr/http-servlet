@@ -1,10 +1,10 @@
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
 import org.slf4j.*;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 
-@WebServlet(name = "testServlet", urlPatterns = "/api/")
+@WebServlet(name = "testServlet", urlPatterns = "/test")
 public class MainServlet implements Servlet {
 
     private static Logger logger = LoggerFactory.getLogger(MainServlet.class);
@@ -12,7 +12,6 @@ public class MainServlet implements Servlet {
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         this.servletConfig = servletConfig;
-        logger.info("gooooo");
     }
 
     @Override
@@ -22,9 +21,7 @@ public class MainServlet implements Servlet {
 
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-        logger.info("new oer request");
-        servletResponse.getWriter().println("jopayes");
-        logger.info("was worked");
+        servletResponse.getWriter().println("<h1>yes</h1>");
     }
 
     @Override
@@ -34,6 +31,6 @@ public class MainServlet implements Servlet {
 
     @Override
     public void destroy() {
-
+        logger.info("destroy");
     }
 }
